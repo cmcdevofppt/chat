@@ -78,9 +78,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     Welcome, <span class="font-semibold text-purple-300"><?php echo htmlspecialchars($username); ?></span>
                 </p>
             </div>
-            <a href="logout.php" 
+            <a 
                class="px-4 py-2 bg-gray-700 hover:bg-gray-600 text-gray-200 rounded-lg transition-colors duration-200 text-sm font-medium shadow-md hover:shadow-lg">
-                Logout →
+                Dev 205 
             </a>
         </div>
 
