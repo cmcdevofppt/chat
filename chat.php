@@ -680,6 +680,11 @@ $error = '';
         let scrollTimeout = null;
         let isSending = false;
         
+        // Request notification permission on load
+        if ('Notification' in window && Notification.permission === 'default') {
+            Notification.requestPermission();
+        }
+        
         // Theme management
         function initTheme() {
             const savedTheme = localStorage.getItem('theme');
@@ -856,6 +861,17 @@ $error = '';
                     newMessages.forEach(msg => {
                         appendMessage(msg, true);
                     });
+                    
+                    // Show browser notification if new messages and tab not focused
+                    if (newMessages.length > 0 && document.hidden && Notification.permission === 'granted') {
+                        const latestMsg = newMessages[newMessages.length - 1];
+                        const notification = new Notification('New Chat Message', {
+                            body: `${latestMsg.username}: ${latestMsg.message.substring(0, 100)}${latestMsg.message.length > 100 ? '...' : ''}`,
+                            icon: '/favicon.ico' // optional, add a favicon if available
+                        });
+                        // Auto-close after 5 seconds
+                        setTimeout(() => notification.close(), 5000);
+                    }
                     
                     // Smart scroll logic after all messages are added
                     if (wasAtBottom && !isUserScrolling) {
