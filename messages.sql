@@ -36,16 +36,7 @@ CREATE TABLE `messages` (
 
 --
 -- Dumping data for table `messages`
---
-
-INSERT INTO `messages` (`id`, `username`, `message`, `created_at`) VALUES
-(1, 'rfifisa', 'hello', '2026-03-31 13:19:33'),
-(2, 'rfifisa', 'cv', '2026-03-31 13:20:40'),
-(3, 'rfifisa', 'good', '2026-03-31 13:21:28'),
-(4, 'rfifisa', 'fin ghbrti', '2026-03-31 13:21:34'),
-(5, 'rfifisa', 'fin ghbrti', '2026-03-31 13:22:18'),
-(6, 'rfifisa', 'cv', '2026-03-31 13:31:08');
-
+-
 --
 -- Indexes for dumped tables
 --
@@ -70,3 +61,5 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+ALTER TABLE messages ADD COLUMN parent_id INT NULL;
